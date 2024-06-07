@@ -3,18 +3,20 @@ package com.project.privateinstitute.repository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import com.project.privateinstitute.PrivateInstituteApplication;
 import com.project.privateinstitute.entity.Teacher;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@SpringBootTest(classes = PrivateInstituteApplication.class)
 class TeacherRepositoryTest {
-	private TeacherRepository teacherRepository;
 
-	@BeforeEach
-	void setUp() {
-		teacherRepository = new InMemoryTeacherRepository();
-	}
+	@Autowired
+	private TeacherRepository teacherRepository;
 
 	@DisplayName("강사 생성 성공")
 	@Test
@@ -27,6 +29,7 @@ class TeacherRepositoryTest {
 
 		assertEquals(teacher1, teacherRepository.findById(1L));
 		assertEquals(teacher2, teacherRepository.findById(2L));
+		assertEquals(2, teacherRepository.findAll().size());
 	}
 
 	@DisplayName("강사 조회 실패 - 존재하지 않는 강사")

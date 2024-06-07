@@ -2,7 +2,9 @@ package com.project.privateinstitute.service;
 
 import com.project.privateinstitute.entity.Teacher;
 import com.project.privateinstitute.repository.TeacherRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TeacherServiceImpl implements TeacherService {
 	private final TeacherRepository teacherRepository;
 

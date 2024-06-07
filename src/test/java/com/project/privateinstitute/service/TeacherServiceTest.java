@@ -2,22 +2,22 @@ package com.project.privateinstitute.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.project.privateinstitute.PrivateInstituteApplication;
 import com.project.privateinstitute.entity.Teacher;
-import com.project.privateinstitute.repository.InMemoryTeacherRepository;
 import com.project.privateinstitute.repository.TeacherRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@SpringBootTest(classes = PrivateInstituteApplication.class)
 public class TeacherServiceTest {
+	@Autowired
 	private TeacherRepository teacherRepository;
+	@Autowired
 	private TeacherService teacherService;
-
-	@BeforeEach
-	void setUp() {
-		teacherRepository = new InMemoryTeacherRepository();
-		teacherService = new TeacherServiceImpl(teacherRepository);
-	}
 
 	@DisplayName("강사 조회 실패 - 존재하지 않는 강사")
 	@Test

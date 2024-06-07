@@ -4,7 +4,9 @@ import com.project.privateinstitute.entity.Teacher;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class InMemoryTeacherRepository implements TeacherRepository {
 	private Long AUTO_INCREMENT_ID = 1L;
 	private final Map<Long, Teacher> storage = new HashMap<>();
