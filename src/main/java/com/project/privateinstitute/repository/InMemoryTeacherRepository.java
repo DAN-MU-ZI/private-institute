@@ -2,6 +2,7 @@ package com.project.privateinstitute.repository;
 
 import com.project.privateinstitute.entity.Teacher;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryTeacherRepository implements TeacherRepository {
@@ -9,8 +10,8 @@ public class InMemoryTeacherRepository implements TeacherRepository {
 	private final Map<Long, Teacher> storage = new HashMap<>();
 
 	@Override
-	public int findAll() {
-		return storage.size();
+	public List<Teacher> findAll() {
+		return storage.values().stream().toList();
 	}
 
 	@Override

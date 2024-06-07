@@ -43,10 +43,10 @@ class TeacherRepositoryTest {
 
 		teacherRepository.save(teacher1);
 
-		assertEquals(1, teacherRepository.findAll());
+		assertEquals(1, teacherRepository.findAll().size());
 
 		teacherRepository.save(teacher2);
 
-		assertEquals(2, teacherRepository.findAll());
+		assertEquals(2, teacherRepository.findAll().size());
 	}
 }
